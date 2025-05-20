@@ -114,7 +114,7 @@ def load_pytorch_models(model_path, CL):
     for state_dict in models:
         try: 
             model, params = load_model(device, CL) # loads new SpliceAI model with correct hyperparams
-            model.load_state_dict(state_dict)      # loads state dict
+            model.load_state_dict(state_dict, strict=False)      # loads state dict
             model = model.to(device)               # puts model on device
             model.eval()                           # puts model in evaluation mode
             loaded_models.append(model)            # appends model to list of loaded models  
